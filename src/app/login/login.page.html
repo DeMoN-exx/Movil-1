@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- Ingreso de nombre y contraseña -->
+<ion-content>
+  <form>
+    <div class="ion-text-center">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Username</mat-label>
+          <input  type="text" matInput placeholder="User" >
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="ion-text-center">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input  type="password" matInput placeholder="Password" >
+        </mat-form-field>
+      </form>
+    </div>  
+    <!-- boton de ingreso y de recuperar contraseña -->
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center">
+          <ion-button type="submit" color="danger"[routerLink]="['/home']">Ingresar</ion-button>
+          <br>
+          <a [routerLink]="['/recuperar-password']" class="small-text">Olvidaste tu contraseña?</a>
+          <br>
+      </div>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>
