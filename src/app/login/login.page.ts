@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  user ={
+    usuario:'',
+    password:''
   }
+  constructor(private router: Router) { }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+ GoHome(){
+  let navigationExtras: NavigationExtras = {
+    state: {
+      user: this.user
+    }
+  }
+  this.router.navigate(['/home'], navigationExtras);
+ }
 
 }

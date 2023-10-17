@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor() {}
+  state:any;
+  user:any;
+  constructor(private activeroute: ActivatedRoute, private router: Router) {
+    this.activeroute.queryParams.subscribe(params => {
+      this.state = this.router.getCurrentNavigation()?.extras.state;
+      this.user = this.state.user
+      console.log(this.user);
+    })
+  }
 
 }
