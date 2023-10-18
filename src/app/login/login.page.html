@@ -6,23 +6,24 @@
   </p>
   <div id="container">
   <h1>Login</h1>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <mat-form-field class="mat">
-          <mat-label>Ingresa tu usuario</mat-label>
-          <input matInput [(ngModel)]="user.usuario">
-        </mat-form-field>
-      </ion-col>
-      <ion-col>
-        <mat-form-field class="mat">
-          <mat-label>Ingresa tu contraseña</mat-label>
-          <input matInput [(ngModel)]="user.password" class="password">
-          
-        </mat-form-field>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <mat-form-field class="mat">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="user.usuario">
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field class="mat">
+            <mat-label>password</mat-label>
+            <input matInput [(ngModel)]="user.password" class="password">
+            
+          </mat-form-field>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   <br>
   <ion-button fill="outline" color="color" (click)=GoHome()  [routerLink]="['/home']">Ingresar</ion-button>
   <br>
