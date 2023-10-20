@@ -36,5 +36,8 @@ export class HomePage {
     animation.play();
 
   }
-
+  salir(){
+    localStorage.removeItem('ingresado');
+    this.router.navigate(['/login']);
+  }
 }
