@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  hide = true
   user ={
     usuario:'',
     password:''
