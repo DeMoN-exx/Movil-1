@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { ApiService } from '../api.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +13,18 @@ export class LoginPage implements OnInit {
     usuario:'',
     password:''
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router , private apiService: ApiService) { }
   ngOnInit(): void {
   }
-
- GoHome(){
-  let navigationExtras: NavigationExtras = {
-    state: {
-      user: this.user
+ ingresar() {
+    localStorage.setItem('ingresado','true');
+    let navegationExtras: NavigationExtras = {
+      state: {
+        user: this.user
+      }
     }
+    this.router.navigate(['/home'], navegationExtras)
   }
-  this.router.navigate(['/home'], navigationExtras);
- }
 
 }
+

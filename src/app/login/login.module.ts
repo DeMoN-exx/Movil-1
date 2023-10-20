@@ -26,7 +26,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatToolbarModule, 
+    MatToolbarModule,
+     
   ],
   declarations: [LoginPage]
 })
