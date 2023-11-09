@@ -59,7 +59,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',
+    'http://localhost:8100',
 ]
 
 ROOT_URLCONF = 'ApiProject.urls'

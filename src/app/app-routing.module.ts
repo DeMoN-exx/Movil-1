@@ -17,12 +17,12 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
-    canActivate: [NoIngresadoGuard]
+
   },
   {
     path: 'recuperar-password',
     loadChildren: () => import('./recuperar-password/recuperar-password.module').then( m => m.RecuperarPasswordPageModule),
-    canActivate: [NoIngresadoGuard]
+  
   },
 ];
 

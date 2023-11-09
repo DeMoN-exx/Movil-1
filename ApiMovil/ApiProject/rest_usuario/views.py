@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
-from django.views.decorators.csrf import csrf_exempt 
+from django.views.decorators.csrf import csrf_exempt
 from core.models import usuario
 from .serializers import UsuarioSerializer
 # Create your views here.
@@ -32,3 +32,15 @@ def usuario_list(request):
     elif request.method == 'DELETE':
         usuario.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@csrf_exempt
+@api_view(['POST'])
+def login(request):
+    username_ = request.data['username']
+    password_ = request.data['password']
+    usuario_existe = usuario.objects.filter(username=username_, password=password_)
+    if len(usuario_existe) == 1:
+        return Response(data=True, status=status.HTTP_200_OK)
+    else:
+        return Response(data=False, status=status.HTTP_200_OK)
