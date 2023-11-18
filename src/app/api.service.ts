@@ -9,6 +9,11 @@ interface Usuario {
   password: string;
 }
 
+interface RespuestaLogin {
+  username: string;
+  role: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,7 +35,7 @@ export class ApiService {
   async login(username: string, password: string) {
     console.log('Llamando a la API con username: ', username, ' y password: ', password);
     const body = {username: username, password: password};
-    const respuesta: HttpResponse<any> = await firstValueFrom(this.http.post<any>('http://localhost:8000/api/login', body))
+    const respuesta = await firstValueFrom(this.http.post<RespuestaLogin>('http://localhost:8000/api/login', body))
     console.log('Respuesta de la API: ', respuesta);
     return respuesta;
   }

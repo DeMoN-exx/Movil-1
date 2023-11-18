@@ -40,7 +40,12 @@ def login(request):
     username_ = request.data['username']
     password_ = request.data['password']
     usuario_existe = usuario.objects.filter(username=username_, password=password_)
+    print(list(usuario_existe))
     if len(usuario_existe) == 1:
-        return Response(data=True, status=status.HTTP_200_OK)
+        usuario_real = usuario_existe[0]
+        print(usuario_real)
+        serializer = UsuarioSerializer(usuario_real, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
     else:
         return Response(data=False, status=status.HTTP_200_OK)

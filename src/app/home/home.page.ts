@@ -21,7 +21,7 @@ export class HomePage {
   constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
     this.activeroute.queryParams.subscribe(params => {
       this.state = this.router.getCurrentNavigation()?.extras.state;
-      this.user = this.state.user
+      this.user = localStorage.getItem('username')
       console.log(this.user);
     })
   }
@@ -38,6 +38,8 @@ export class HomePage {
   }
   salir(){
     localStorage.removeItem('ingresado');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 }

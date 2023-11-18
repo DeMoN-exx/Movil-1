@@ -27,9 +27,12 @@ export class LoginPage implements OnInit {
     const respuestaLogin = await this.apiService.login(usuario, password);
     console.log("Respuesta de la base de datos", respuestaLogin)
     if (respuestaLogin) {
+      localStorage.setItem('role', String(respuestaLogin.role));
+      localStorage.setItem('username', respuestaLogin.username);
       localStorage.setItem('ingresado', 'true');
-      let navegationExtras: NavigationExtras = {state: {user: this.user}}
-      this.router.navigate(['/home'], navegationExtras)
+      this.user.usuario = '';
+      this.user.password = '';
+      this.router.navigate(['/home'])
     } else {
       localStorage.setItem('ingresado', 'false');
       console.log('Error de usuario o contraseÃ±a')

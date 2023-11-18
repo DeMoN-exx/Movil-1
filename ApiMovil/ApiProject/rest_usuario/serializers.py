@@ -4,4 +4,4 @@ from core.models import usuario
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = usuario
-        fields = '__all__'
+        fields = 'username','role'
