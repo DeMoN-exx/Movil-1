@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import type { QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
-import { AnimationController, IonCard } from '@ionic/angular';
+import { AnimationController, IonCard, IonSegment } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +16,11 @@ export class HomePage {
 
   @ViewChild(IonCard, { read: ElementRef })
   card!: ElementRef<HTMLIonCardElement>;
+  @ViewChild(IonSegment) 
+  segment!:IonSegment;
 
   private animation!: Animation;
+  private selectedSegment!: string
   constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
     this.activeroute.queryParams.subscribe(params => {
       this.state = this.router.getCurrentNavigation()?.extras.state;
@@ -42,4 +45,11 @@ export class HomePage {
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
+  ngoninit(){
+    this.segment.value = 'Inicio';
+  }
+  segmentChanged( event: any )  {
+    console.log (event.target.value);
+    this.selectedSegment = event.target.value;
+  } 
 }
