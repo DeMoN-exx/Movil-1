@@ -20,8 +20,8 @@ export class HomePage {
   segment!:IonSegment;
 
   private animation!: Animation;
-  private selectedSegment!: string
-  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
+  public selectedSegment!: string
+  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController,) {
     this.activeroute.queryParams.subscribe(params => {
       this.state = this.router.getCurrentNavigation()?.extras.state;
       this.user = localStorage.getItem('username')
