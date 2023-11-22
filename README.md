@@ -1,4 +1,12 @@
 
+# AL CLONAR EL REPOSITORIO, PRIMEROS COMANDOS POR CORRER
+npm i
+npm run build
+npx cap sync
+
+# PARA ABRIR ANDROID
+npx cap open android
+
 
 Create the Guard 
 API |
@@ -34,3 +42,4 @@ pymysql.install_as_MySQLdb()
 python manage.py createsuperuser
 ```
 pip install django-cors-headers
+

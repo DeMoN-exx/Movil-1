@@ -19,3 +19,15 @@ class usuario(models.Model):
     REQUIRED_FIELDS = ['password', 'role']
     def __str__(self):
         return self.username
+    
+
+class viaje(models.Model):
+    idViaje = models.AutoField(primary_key=True, unique=True)
+    #idChofer = models.ForeignKey('usuario', to_field='username', on_delete=models.CASCADE)
+    capacidadVehiculo = models.IntegerField()
+    vehiculo = models.CharField(max_length=30)
+    tarifa = models.IntegerField()
+    destino = models.CharField(max_length=30)
+    origen = models.CharField(max_length=30)
+
+
