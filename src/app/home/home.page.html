@@ -4,10 +4,10 @@
       <ion-segment-button value="Inicio">
         <ion-label>Inicio</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="Buscar">
+      <ion-segment-button *ngIf="role == 1 || role == 2" value="Buscar">
         <ion-label>Buscar un viaje</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="Realizar">
+      <ion-segment-button *ngIf="role == 1 || role == 3" value="Realizar">
         <ion-label>Realizar un viaje</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -20,9 +20,11 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
- 
+
   <ion-card #card *ngIf="selectedSegment == 'Inicio'">
-    <ion-card-content><h1>Bienvenido {{user}}</h1></ion-card-content>
+    <ion-card-content>
+      <h1>Bienvenido {{user}}</h1>
+    </ion-card-content>
   </ion-card>
   <ion-card *ngIf="selectedSegment == 'Buscar'">
 
@@ -40,6 +42,6 @@
   </ion-card>
 
 
-  <ion-button fill="outline"  (click)="salir()" >Volver</ion-button>
+  <ion-button fill="outline" (click)="salir()">Volver</ion-button>
 
 </ion-content>
