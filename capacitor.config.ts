@@ -5,8 +5,14 @@ const config: CapacitorConfig = {
   appName: 'Proyecto',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'https',
+    iosScheme: 'https',
+  },
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 0,
+    },
+  },
 };
 
 export default config;
