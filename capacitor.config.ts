@@ -1,18 +1,12 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'Proyecto',
+  appId: 'cl.tellevo.app',
+  appName: 'TeLlevoAPP',
   webDir: 'www',
   server: {
-    androidScheme: 'https',
-    iosScheme: 'https',
-  },
-  plugins: {
-    SplashScreen: {
-      launchShowDuration: 0,
-    },
-  },
+    androidScheme: 'https'
+  }
 };
 
 export default config;
