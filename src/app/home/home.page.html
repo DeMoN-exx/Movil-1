@@ -37,11 +37,37 @@
 
     <ion-card-content>
       <h1>Realizar un viaje</h1>
+      <ion-list>
+        <ion-list>
+          <h1> Chofer: {{user}}</h1>
+          <ion-item>
+            <ion-input label="Capacidad del Vehiculo" [(ngModel)]="capacidadVehiculo" type="number"  placeholder="0"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-input label="Vehiculo " [(ngModel)]="vehiculo" placeholder="Ingresar el tipo de vehiculo"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-input label="Tarifa del viaje" [(ngModel)]="tarifaViaje" type="number" value="$"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-input label="Destino " [(ngModel)]="destino" type="text" placeholder="Ubicacion de Destino"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-input label="Origen" [(ngModel)]="origen" type="text" placeholder="Ubicacion de Origen"></ion-input>
+          </ion-item>
+          <ion-button fill="outline" (click)="registrarViaje()">Registrar</ion-button>
+        </ion-list>
+      </ion-list>
     </ion-card-content>
 
   </ion-card>
 
 
   <ion-button fill="outline" (click)="salir()">Volver</ion-button>
+  
 
 </ion-content>

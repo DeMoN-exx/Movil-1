@@ -13,19 +13,26 @@ interface RespuestaLogin {
   username: string;
   role: number;
 }
-
+interface Viaje {
+  capacidadVehiculo: number ;
+  vehiculo: string ;
+  tarifaViaje: number ;
+  destino: string ;
+  origen: string ; 
+}
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
-  apiURL = 'http://localhost:8000/api/lista_usuarios/'
+  private apiURL = 'http://127.0.0.1:8000/'; 
 
   constructor(private http: HttpClient) {
   }
 
   getUsuarios(): void {
-    console.log('Llamando a la API');
-    const observable = this.http.get<Usuario[]>(this.apiURL);
+    console.log('Recuperando usuarios');
+    const observable = this.http.get<Usuario[]>(this.apiURL +'api/lista_usuarios/');
     observable.subscribe(lista => {
       console.log(lista);
       console.log(JSON.stringify(lista))
@@ -39,4 +46,7 @@ export class ApiService {
     console.log('Respuesta de la API: ', respuesta);
     return respuesta;
   }
+  registrarViaje(datosViaje: any): Observable<any> {
+    return this.http.post<Viaje>(`${this.apiURL}admin/core/viaje/`, datosViaje);
+ }
 }
