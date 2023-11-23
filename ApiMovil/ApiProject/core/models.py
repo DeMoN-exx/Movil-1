@@ -29,5 +29,6 @@ class viaje(models.Model):
     tarifa = models.IntegerField()
     destino = models.CharField(max_length=30)
     origen = models.CharField(max_length=30)
-
+    def __str__(self):
+        return self.idViaje
 

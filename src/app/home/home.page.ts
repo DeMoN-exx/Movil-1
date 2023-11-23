@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import type { QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard, IonSegment } from '@ionic/angular';
@@ -19,6 +19,7 @@ export class HomePage {
   tarifaViaje: number | undefined;
   destino: string | undefined;
   origen: string | undefined;
+  viajes: any = [];
 
   @ViewChild(IonCard, { read: ElementRef })
   card!: ElementRef<HTMLIonCardElement>;
@@ -42,6 +43,7 @@ export class HomePage {
   }
   ngoninit() {
     this.segment.value = 'Inicio';
+    this.CargaViaje()
   }
   segmentChanged(event: any) {
     console.log(event.target.value);
@@ -67,8 +69,21 @@ export class HomePage {
         console.log('Registro de viaje exitoso:', response);
       },
       (error) => {
-        console.error('Error al registrar el viaje:', error);
+        console.error('Error al registrar el viaje:', error, data);
       }
     );
+  }
+  CargaViaje(){
+    this.apiService.getViajes().subscribe(
+      (response)=>{
+        console.log(response);
+        this.viajes = response;
+        console.log('peep');
+      }
+      ,
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 }

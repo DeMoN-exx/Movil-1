@@ -46,7 +46,10 @@ export class ApiService {
     console.log('Respuesta de la API: ', respuesta);
     return respuesta;
   }
-  registrarViaje(datosViaje: any): Observable<any> {
-    return this.http.post<Viaje>(`${this.apiURL}admin/core/viaje/`, datosViaje);
+  registrarViaje(data: any): Observable<any> {
+    return this.http.post<Viaje>(`${this.apiURL}api/lista_viajes/`, data);
  }
+ getViajes():Observable<any> {
+  return this.http.get(this.apiURL+'lista_viajes/')
+}
 }
