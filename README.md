@@ -11,6 +11,8 @@ python manage.py migrate
 
 python manage.py createsuperuser admin/admin
 
+# Correo de ejemplo
+Reemplazar correo de ejemplo en la linea 98 del home.page.ts 'example@example.com' con correo actual
 
 # Django-Admin
 Crear usuario con Rol Chofer
