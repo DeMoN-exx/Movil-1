@@ -23,8 +23,8 @@ class usuario(models.Model):
 
 class viaje(models.Model):
     idViaje = models.AutoField(primary_key=True, unique=True)
-    Chofer = models.ForeignKey(usuario, to_field='username', on_delete=models.CASCADE)
-    capacidadVehiculo = models.IntegerField(max_length=8)
+    chofer = models.ForeignKey(usuario, to_field='username', on_delete=models.CASCADE, default=1)
+    capacidadVehiculo = models.IntegerField()
     vehiculo = models.CharField(max_length=30)
     tarifa = models.IntegerField()
     destino = models.CharField(max_length=30)

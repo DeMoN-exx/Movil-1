@@ -1,11 +1,22 @@
 
 # AL CLONAR EL REPOSITORIO, PRIMEROS COMANDOS POR CORRER
-npm i
+npm --force i
 npm run build
 npx cap sync
+npx cap add android
+
 
 # PARA ABRIR ANDROID
 npx cap open android
+
+# Crear superusuario:
+
+```shell
+python manage.py createsuperuser
+```
+
+# EN ANDROID STUDIO
+crear un celular con playstore
 
 
 Create the Guard 
@@ -36,10 +47,5 @@ import pymysql
 pymysql.install_as_MySQLdb()
 ```
 
-# Crear superusuario:
-
-```shell
-python manage.py createsuperuser
-```
 pip install django-cors-headers
 

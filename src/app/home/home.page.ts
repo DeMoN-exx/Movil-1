@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import type { QueryList } from '@angular/core';
+import type { OnInit, QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard, IonSegment } from '@ionic/angular';
 import { ApiService } from '../api.service';
@@ -10,13 +10,13 @@ import { ApiService } from '../api.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
   state: any;
   user: any;
   role: any;
   capacidadVehiculo: number | undefined;
   vehiculo: string | undefined;
-  tarifaViaje: number | undefined;
+  tarifa: number | undefined;
   destino: string | undefined;
   origen: string | undefined;
   viajes: any = [];
@@ -30,10 +30,6 @@ export class HomePage {
   public selectedSegment!: string
   ApiService: any;
   constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController,private apiService: ApiService) {
-    this.state = this.router.getCurrentNavigation()?.extras.state;
-    this.user = localStorage.getItem('username')
-    this.role = localStorage.getItem('role')
-    console.log(this.user);
   }
   salir() {
     localStorage.removeItem('ingresado');
@@ -41,8 +37,12 @@ export class HomePage {
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
-  ngoninit() {
-    this.segment.value = 'Inicio';
+  ngOnInit() {
+    //this.segment.value = 'Inicio';
+    this.state = this.router.getCurrentNavigation()?.extras.state;
+    this.user = localStorage.getItem('username')
+    this.role = localStorage.getItem('role')
+    console.log(this.user);
     this.CargaViaje()
   }
   segmentChanged(event: any) {
@@ -50,16 +50,16 @@ export class HomePage {
     this.selectedSegment = event.target.value;
   }
   registrarViaje() {
-    if (!this.capacidadVehiculo || !this.vehiculo || !this.tarifaViaje || !this.destino || !this.origen) {
+    if (!this.capacidadVehiculo || !this.vehiculo || !this.tarifa || !this.destino || !this.origen) {
       console.log('Por favor complete todos los campos.');
       return;
     }
 
     const data = {
-      usuario: this.user,
+      chofer: this.user,
       capacidadVehiculo: this.capacidadVehiculo,
       vehiculo: this.vehiculo,
-      tarifaViaje: this.tarifaViaje,
+      tarifa: this.tarifa,
       destino: this.destino,
       origen: this.origen,
     };
