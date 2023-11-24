@@ -26,7 +26,7 @@ interface Viaje {
 
 export class ApiService {
   private apiURL = 'http://127.0.0.1:8000/';
-
+  //private apiURL = 'http://192.168.0.11:8000/';
   constructor(private http: HttpClient) {
   }
 
@@ -42,7 +42,7 @@ export class ApiService {
   async login(username: string, password: string) {
     console.log('Llamando a la API con username: ', username, ' y password: ', password);
     const body = { username: username, password: password };
-    const respuesta = await firstValueFrom(this.http.post<RespuestaLogin>('http://localhost:8000/api/login', body))
+    const respuesta = await firstValueFrom(this.http.post<RespuestaLogin>(this.apiURL + 'api/login', body))
     console.log('Respuesta de la API: ', respuesta);
     return respuesta;
   }
