@@ -3,7 +3,7 @@
 npm --force i
 npm run build
 npx cap sync
-npx cap add android
+npx cap add android # SOLO SI ANDROID FOLDER NO EXISTE
 
 
 # PARA ABRIR ANDROID

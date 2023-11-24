@@ -5,6 +5,7 @@ import type { OnInit, QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard, IonSegment } from '@ionic/angular';
 import { ApiService } from '../api.service';
+import { Geolocation } from '@capacitor/geolocation';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -85,5 +86,10 @@ export class HomePage implements OnInit{
         console.log(error);
       }
     )
+  }
+  async geolocalizar() {
+    const coordinates = await Geolocation.getCurrentPosition();
+
+    console.log('Current position:', coordinates);
   }
 }
