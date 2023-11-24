@@ -11,9 +11,14 @@ python manage.py migrate
 
 python manage.py createsuperuser admin/admin
 
+
 # Django-Admin
 Crear usuario con Rol Chofer
 Crear usuario con Rol Pasajero
+
+# Lista usuario y viajes
+http://127.0.0.1:8000/api/lista_viajes/
+http://127.0.0.1:8000/api/usuarios/
 
 # PARA ABRIR ANDROID
 npx cap open android
