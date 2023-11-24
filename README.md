@@ -1,19 +1,23 @@
 
 # AL CLONAR EL REPOSITORIO, PRIMEROS COMANDOS POR CORRER
 npm --force i
-npm run build
-npx cap sync
+npm run build o ionic build
 npx cap add android # SOLO SI ANDROID FOLDER NO EXISTE
+npx cap sync
 
+# Django
+python manage.py makemigrations core
+python manage.py migrate
+
+python manage.py createsuperuser admin/admin
+
+# Django-Admin
+Crear usuario con Rol Chofer
+Crear usuario con Rol Pasajero
 
 # PARA ABRIR ANDROID
 npx cap open android
 
-# Crear superusuario:
-
-```shell
-python manage.py createsuperuser
-```
 
 # EN ANDROID STUDIO
 crear un celular con playstore
