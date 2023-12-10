@@ -41,6 +41,8 @@
           <h1>Vehiculo: {{viaje.vehiculo}}</h1>
           <h1>Tarifa: {{viaje.tarifa}}</h1>
           <h1>Capacidad del Vehiculo: {{viaje.capacidadVehiculo}}</h1>
+          <h1>Destino: {{viaje.destino}}</h1>
+          <h1>Origen: {{viaje.origen}}</h1>
          <ion-button fill="outline" *ngIf="viaje.capacidadVehiculo != 0" style="margin-bottom: 10px;" color="success"
             (click)="tomarViajes(viaje.patente)" [disabled]="viajetomado">
             Tomar Viaje

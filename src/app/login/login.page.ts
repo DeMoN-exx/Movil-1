@@ -12,7 +12,6 @@ export class LoginPage implements OnInit {
   user = {
     usuario: '',
     password: '',
-    correo: ''
   }
 
   constructor(private router: Router, private apiService: ApiService) {
@@ -24,14 +23,12 @@ export class LoginPage implements OnInit {
   async ingresar() {
     let usuario = this.user.usuario;
     let password = this.user.password;
-    let email = this.user.correo;
     const respuestaLogin = await this.apiService.login(usuario, password,);
     console.log("Respuesta de la base de datos", respuestaLogin)
     if (respuestaLogin) {
       localStorage.setItem('role', String(respuestaLogin.role));
       localStorage.setItem('username', respuestaLogin.username);
       localStorage.setItem('ingresado', 'true');
-      localStorage.setItem('email', email);
       this.user.usuario = '';
       this.user.password = '';
       this.router.navigate(['/home'])

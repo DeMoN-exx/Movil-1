@@ -45,7 +45,7 @@ export class HomePage implements OnInit {
     this.state = this.router.getCurrentNavigation()?.extras.state;
     this.user = localStorage.getItem('username')
     this.role = localStorage.getItem('role')
-    console.log(this.user);
+    console.log('Usuario: ', this.user);
     this.CargaViaje()
   }
   segmentChanged(event: any) {
@@ -87,9 +87,8 @@ export class HomePage implements OnInit {
   CargaViaje() {
     this.apiService.getViajes().subscribe(
       (response) => {
-        console.log(response);
         this.viajes = response;
-        console.log('peep');
+        console.log('Viajes cargados');
       }
       ,
       (error) => {
@@ -106,7 +105,7 @@ export class HomePage implements OnInit {
   tomarViajes(patente: string) {
     for (const viaje of this.viajes) {
       if (viaje.patente == patente) {
-        console.log("Hola Mundo")
+        console.log("Viaje encontrado")
         viaje.capacidadVehiculo -= 1;
         this.viajetomado = true;
         this.apiService.tomarViajes(viaje.patente, viaje).subscribe(
@@ -116,10 +115,14 @@ export class HomePage implements OnInit {
           }
           ,
           (error) => {
-                console.log(error);
-            }
-          )
+            console.log(error);
+          }
+        )
+
       }
+
+
     }
 
-  }}
+  }
+}
