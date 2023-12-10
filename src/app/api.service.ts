@@ -7,6 +7,7 @@ import { Observable, tap, of } from 'rxjs';
 interface Usuario {
   username: string;
   password: string;
+  correo: string;
 }
 
 interface RespuestaLogin {
@@ -14,6 +15,7 @@ interface RespuestaLogin {
   role: number;
 }
 interface Viaje {
+  patente: string;
   capacidadVehiculo: number;
   vehiculo: string;
   tarifaViaje: number;
@@ -51,5 +53,8 @@ export class ApiService {
   }
   getViajes(): Observable<any> {
     return this.http.get(this.apiURL + 'api/lista_viajes/')
+  }
+  tomarViajes(patente : any, data : any): Observable<any> {
+    return this.http.put(this.apiURL+'api/detalle_viaje/'+patente+'/', data);
   }
 }

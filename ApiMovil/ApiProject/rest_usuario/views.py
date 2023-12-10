@@ -8,7 +8,7 @@ from core.models import usuario
 from .serializers import UsuarioSerializer
 # Create your views here.
 @csrf_exempt
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST',])
 def usuario_list(request):
     if request.method == 'GET':
         usuarios = usuario.objects.all()

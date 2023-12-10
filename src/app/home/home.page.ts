@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import type { OnInit, QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard, IonSegment } from '@ionic/angular';
@@ -11,16 +11,18 @@ import { Geolocation } from '@capacitor/geolocation';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
   state: any;
   user: any;
   role: any;
   capacidadVehiculo: number | undefined;
+  patente: string | undefined;
   vehiculo: string | undefined;
   tarifa: number | undefined;
   destino: string | undefined;
   origen: string | undefined;
   viajes: any = [];
+  viajetomado: boolean = false;
 
   @ViewChild(IonCard, { read: ElementRef })
   card!: ElementRef<HTMLIonCardElement>;
@@ -30,7 +32,7 @@ export class HomePage implements OnInit{
   private animation!: Animation;
   public selectedSegment!: string
   ApiService: any;
-  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController,private apiService: ApiService) {
+  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController, private apiService: ApiService) {
   }
   salir() {
     localStorage.removeItem('ingresado');
@@ -58,6 +60,7 @@ export class HomePage implements OnInit{
 
     const data = {
       chofer: this.user,
+      patente: this.patente,
       capacidadVehiculo: this.capacidadVehiculo,
       vehiculo: this.vehiculo,
       tarifa: this.tarifa,
@@ -67,6 +70,13 @@ export class HomePage implements OnInit{
 
     this.apiService.registrarViaje(data).subscribe(
       (response) => {
+        this.user = '';
+        this.patente = '';
+        this.capacidadVehiculo = 0;
+        this.vehiculo = '';
+        this.tarifa = 0;
+        this.destino = '';
+        this.origen = '';
         console.log('Registro de viaje exitoso:', response);
       },
       (error) => {
@@ -74,15 +84,15 @@ export class HomePage implements OnInit{
       }
     );
   }
-  CargaViaje(){
+  CargaViaje() {
     this.apiService.getViajes().subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
         this.viajes = response;
         console.log('peep');
       }
       ,
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     )
@@ -92,9 +102,24 @@ export class HomePage implements OnInit{
 
     console.log('Current position:', coordinates);
   }
-  TomarViaje(){
-    
-  }
 
-  
-}
+  tomarViajes(patente: string) {
+    for (const viaje of this.viajes) {
+      if (viaje.patente == patente) {
+        console.log("Hola Mundo")
+        viaje.capacidadVehiculo -= 1;
+        this.viajetomado = true;
+        this.apiService.tomarViajes(viaje.patente, viaje).subscribe(
+          response => {
+            console.log('Capacidad actualizada con éxito:', response);
+            console.log('Capacidad actualizada del viaje: ' + viaje.capacidadVehiculo)
+          }
+          ,
+          (error) => {
+                console.log(error);
+            }
+          )
+      }
+    }
+
+  }}

@@ -21,15 +21,24 @@ def viaje_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = ViajeSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['GET','PUT','DELETE'])
+def detalle_viaje (request,pk):
+    try:
+        Viaje = viaje.objects.get(patente=pk)
+    except viaje.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serilizer = ViajeSerializer(Viaje)
+        return Response(serilizer.data)
+    if request.method == 'PUT':
+        serilizer = ViajeSerializer(Viaje,data=request.data)
+        if serilizer.is_valid():
+            serilizer.save()
+            return Response(serilizer.data)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'DELETE':
+            return Response(serilizer.errors,status=status.HTTP_404_NOT_FOUND)
+    if request.method =='DELETE':
         viaje.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

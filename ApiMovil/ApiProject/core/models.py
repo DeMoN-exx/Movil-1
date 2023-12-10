@@ -4,6 +4,7 @@ from django.db import models
 class usuario(models.Model):
     username = models.CharField(max_length=30, primary_key=True, unique=True)
     password = models.CharField(max_length=30)
+    correo = models.CharField(max_length=30)
 
     #roles
     ADMIN = 1
