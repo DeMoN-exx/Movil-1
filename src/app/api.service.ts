@@ -25,8 +25,8 @@ interface Viaje {
 })
 
 export class ApiService {
-  private apiURL = 'https://z673ld9f-8000.brs.devtunnels.ms/';
-  //private apiURL = 'http://127.0.0.1:8000/';
+  //private apiURL = 'https://z673ld9f-8000.brs.devtunnels.ms/';
+  private apiURL = 'http://127.0.0.1:8000/';
   constructor(private http: HttpClient) {
   }
 

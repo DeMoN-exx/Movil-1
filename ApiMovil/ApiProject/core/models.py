@@ -22,7 +22,7 @@ class usuario(models.Model):
     
 
 class viaje(models.Model):
-    idViaje = models.AutoField(primary_key=True, unique=True)
+    patente = models.CharField(primary_key=True, unique=True, max_length=6)
     chofer = models.ForeignKey(usuario, to_field='username', on_delete=models.CASCADE, default=1)
     capacidadVehiculo = models.IntegerField()
     vehiculo = models.CharField(max_length=30)
@@ -30,5 +30,5 @@ class viaje(models.Model):
     destino = models.CharField(max_length=30)
     origen = models.CharField(max_length=30)
     def __str__(self):
-        return self.idViaje
+        return self.patente
 

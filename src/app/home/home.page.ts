@@ -92,20 +92,9 @@ export class HomePage implements OnInit{
 
     console.log('Current position:', coordinates);
   }
-
-  sendEmail() {
-    // Replace 'recipient@example.com' with the actual email address you want to send the email to
-    const email = 'example@example.com';
-
-    const subject = 'Confirmación de viaje';
-
-    // Replace 'Body' with the body of your email
-    const body = 'Confirme su viaje de TeLlevoAPP';
-
-    // Construct the mailto URL
-    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    // Open the default email client
-    window.location.href = mailtoUrl;
+  TomarViaje(){
+    
   }
+
+  
 }
