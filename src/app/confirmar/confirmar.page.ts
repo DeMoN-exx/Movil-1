@@ -61,6 +61,7 @@ export class ConfirmarPage implements OnInit {
             console.log('Capacidad actualizada con éxito:', response);
             console.log('Capacidad actualizada del viaje: ' + viaje.capacidadVehiculo)
             console.log('Viaje cancelado')
+            localStorage.removeItem('Patente');
             this.router.navigate(['/home']).then(() => {
               window.location.reload();
             });
@@ -90,6 +91,7 @@ export class ConfirmarPage implements OnInit {
         }
         this.apiService.enviar_correo(correo).subscribe(
           (response) => {
+
             this.router.navigate(['/home']).then(() => {
               window.location.reload();
             });
