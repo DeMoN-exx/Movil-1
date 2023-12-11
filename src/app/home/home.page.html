@@ -34,22 +34,22 @@
 
     <ion-card-content>
       <div *ngFor="let viaje of viajes">
-
-        <ion-card-content>
-          <h1>Patente: {{viaje.patente}}</h1>
-          <h1>Chofer: {{viaje.chofer}}</h1>
-          <h1>Vehiculo: {{viaje.vehiculo}}</h1>
-          <h1>Tarifa: {{viaje.tarifa}}</h1>
-          <h1>Capacidad del Vehiculo: {{viaje.capacidadVehiculo}}</h1>
-          <h1>Destino: {{viaje.destino}}</h1>
-          <h1>Origen: {{viaje.origen}}</h1>
-         <ion-button fill="outline" *ngIf="viaje.capacidadVehiculo != 0" style="margin-bottom: 10px;" color="success"
-            (click)="tomarViajes(viaje.patente)" [disabled]="viajetomado">
-            Tomar Viaje
-          </ion-button>
-          <p fill="outline" *ngIf="viaje.capacidadVehiculo == 0" color="success">Viaje Lleno</p>
-        </ion-card-content>
-
+        <div *ngIf="viaje.capacidadVehiculo != 0">
+          <ion-card-content>
+            <h1>Patente: {{viaje.patente}}</h1>
+            <h1>Chofer: {{viaje.chofer}}</h1>
+            <h1>Vehiculo: {{viaje.vehiculo}}</h1>
+            <h1>Tarifa: {{viaje.tarifa}}</h1>
+            <h1>Capacidad del Vehiculo: {{viaje.capacidadVehiculo}}</h1>
+            <h1>Destino: {{viaje.destino}}</h1>
+            <h1>Origen: {{viaje.origen}}</h1>
+          <ion-button fill="outline" *ngIf="viaje.capacidadVehiculo != 0" style="margin-bottom: 10px;" color="success"
+              (click)="tomarViajes(viaje.patente)" [disabled]="viajetomado">
+              Tomar Viaje
+            </ion-button>
+            <p fill="outline" *ngIf="viaje.capacidadVehiculo == 0" color="success">Viaje Lleno</p>
+          </ion-card-content>
+        </div>
       </div>
     </ion-card-content>
 

@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Confirmación del viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Confirmacion del viaje</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-button fill="outline" (click)="salir(PATENTE)">Cancelar viaje</ion-button>
+  <ion-button fill="outline" (click)="confirmar()">Confirmar viaje</ion-button>
+</ion-content>

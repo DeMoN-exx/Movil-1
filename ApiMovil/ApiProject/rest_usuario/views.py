@@ -34,6 +34,26 @@ def usuario_list(request):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+@api_view(['GET','PUT','DELETE'])
+def detalle_usuarios (request,id):
+    try:
+        user = usuario.objects.get(username=id)
+    except usuario.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serilizer = UsuarioSerializer(user)
+        return Response(serilizer.data)
+    if request.method == 'PUT':
+        serilizer = UsuarioSerializer(user,data=request.data)
+        if serilizer.is_valid():
+            serilizer.save()
+            return Response(serilizer.data)
+        else:
+            return Response(serilizer.errors,status=status.HTTP_404_NOT_FOUND)
+    if request.method =='DELETE':
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT) 
+
 @csrf_exempt
 @api_view(['POST'])
 def login(request):

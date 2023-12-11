@@ -20,7 +20,8 @@ class usuario(models.Model):
     REQUIRED_FIELDS = ['password', 'role']
     def __str__(self):
         return self.username
-    
+
+
 
 class viaje(models.Model):
     patente = models.CharField(primary_key=True, unique=True, max_length=6)

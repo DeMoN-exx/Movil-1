@@ -6,6 +6,7 @@ import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard, IonSegment } from '@ionic/angular';
 import { ApiService } from '../api.service';
 import { Geolocation } from '@capacitor/geolocation';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -23,6 +24,7 @@ export class HomePage implements OnInit {
   origen: string | undefined;
   viajes: any = [];
   viajetomado: boolean = false;
+  
 
   @ViewChild(IonCard, { read: ElementRef })
   card!: ElementRef<HTMLIonCardElement>;
@@ -42,6 +44,7 @@ export class HomePage implements OnInit {
   }
   ngOnInit() {
     //this.segment.value = 'Inicio';
+    
     this.state = this.router.getCurrentNavigation()?.extras.state;
     this.user = localStorage.getItem('username')
     this.role = localStorage.getItem('role')
@@ -53,7 +56,7 @@ export class HomePage implements OnInit {
     this.selectedSegment = event.target.value;
   }
   registrarViaje() {
-    if (!this.capacidadVehiculo || !this.vehiculo || !this.tarifa || !this.destino || !this.origen) {
+    if (!this.patente || !this.capacidadVehiculo || !this.vehiculo || !this.tarifa || !this.destino || !this.origen) {
       console.log('Por favor complete todos los campos.');
       return;
     }
@@ -70,7 +73,6 @@ export class HomePage implements OnInit {
 
     this.apiService.registrarViaje(data).subscribe(
       (response) => {
-        this.user = '';
         this.patente = '';
         this.capacidadVehiculo = 0;
         this.vehiculo = '';
@@ -112,6 +114,8 @@ export class HomePage implements OnInit {
           response => {
             console.log('Capacidad actualizada con éxito:', response);
             console.log('Capacidad actualizada del viaje: ' + viaje.capacidadVehiculo)
+            localStorage.setItem('Patente', viaje.patente);
+            this.router.navigate(['/confirmar']);
           }
           ,
           (error) => {

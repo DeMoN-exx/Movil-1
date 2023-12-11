@@ -23,7 +23,11 @@ const routes: Routes = [
     path: 'recuperar-password',
     loadChildren: () => import('./recuperar-password/recuperar-password.module').then( m => m.RecuperarPasswordPageModule),
   
+  },  {
+    path: 'confirmar',
+    loadChildren: () => import('./confirmar/confirmar.module').then( m => m.ConfirmarPageModule)
   },
+
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { catchError, firstValueFrom } from 'rxjs';
 import { inject } from '@angular/core';
 import { Observable, tap, of } from 'rxjs';
 
+
 interface Usuario {
   username: string;
   password: string;
@@ -56,5 +57,12 @@ export class ApiService {
   }
   tomarViajes(patente : any, data : any): Observable<any> {
     return this.http.put(this.apiURL+'api/detalle_viaje/'+patente+'/', data);
+  }
+  enviar_correo(data: any): Observable<any> {
+    return this.http.post(this.apiURL + 'api/enviar_correo/', data);
+  }
+
+  obtener_correo(user: string): Observable<Usuario> {
+    return this.http.get<Usuario>(this.apiURL+'api/detalle_usuarios/'+user);
   }
 }

@@ -31,7 +31,9 @@ export class LoginPage implements OnInit {
       localStorage.setItem('ingresado', 'true');
       this.user.usuario = '';
       this.user.password = '';
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']).then(() => {
+        window.location.reload();
+      })
     } else {
       localStorage.setItem('ingresado', 'false');
       console.log('Error de usuario o contraseÃ±a')
