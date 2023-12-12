@@ -21,6 +21,8 @@ def funcion2 (request):
     datos = {'viajes': viajes}
     return render(request, 'core/funcion2.html')
 
+
+'''
 @api_view(['POST'])
 @csrf_exempt
 def enviar_correo(request):
@@ -47,3 +49,4 @@ def enviar_correo(request):
         return JsonResponse({'mensaje': 'Correo enviado con éxito'})
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+'''

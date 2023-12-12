@@ -25,6 +25,7 @@ export class HomePage implements OnInit {
   viajes: any = [];
   viajetomado: boolean = false;
   
+  
 
   @ViewChild(IonCard, { read: ElementRef })
   card!: ElementRef<HTMLIonCardElement>;
@@ -50,6 +51,7 @@ export class HomePage implements OnInit {
     this.role = localStorage.getItem('role')
     console.log('Usuario: ', this.user);
     this.CargaViaje()
+  
   }
   segmentChanged(event: any) {
     console.log(event.target.value);
@@ -98,6 +100,9 @@ export class HomePage implements OnInit {
       }
     )
   }
+
+
+  
   async geolocalizar() {
     const coordinates = await Geolocation.getCurrentPosition();
 
@@ -105,6 +110,7 @@ export class HomePage implements OnInit {
   }
 
   tomarViajes(patente: string) {
+  
     for (const viaje of this.viajes) {
       if (viaje.patente == patente) {
         console.log("Viaje encontrado")
@@ -112,6 +118,8 @@ export class HomePage implements OnInit {
         this.viajetomado = true;
         this.apiService.tomarViajes(viaje.patente, viaje).subscribe(
           response => {
+          
+            
             console.log('Capacidad actualizada con éxito:', response);
             console.log('Capacidad actualizada del viaje: ' + viaje.capacidadVehiculo)
             localStorage.setItem('Patente', viaje.patente);

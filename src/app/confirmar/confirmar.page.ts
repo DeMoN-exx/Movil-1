@@ -80,6 +80,9 @@ export class ConfirmarPage implements OnInit {
   }
 
   confirmar() {
+    this.router.navigate(['/home']).then(() => {
+      window.location.reload();
+    /*
     this.apiService.obtener_correo(this.user).subscribe(
       (data) => {
 
@@ -103,5 +106,7 @@ export class ConfirmarPage implements OnInit {
         );
       }
     )
+    */
+    });
   }
 }
