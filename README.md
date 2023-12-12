@@ -4,6 +4,11 @@ npm --force i
 npm run build o ionic build
 npx cap add android # SOLO SI ANDROID FOLDER NO EXISTE
 npx cap sync
+# BORRAR MIGRACIONES Y PYCACHE DE
+ApiProject
+core
+rest_usuario
+rest_viaje
 
 # Django
 python manage.py makemigrations core
@@ -11,8 +16,6 @@ python manage.py migrate
 
 python manage.py createsuperuser admin/admin
 
-# Correo de ejemplo
-Reemplazar correo de ejemplo en la linea 98 del home.page.ts 'example@example.com' con correo actual
 
 # Django-Admin
 Crear usuario con Rol Chofer
@@ -24,10 +27,7 @@ http://127.0.0.1:8000/api/usuarios/
 
 # PARA ABRIR ANDROID
 npx cap open android
-
-
-# EN ANDROID STUDIO
-crear un celular con playstore
+# Dentro de android studio ir a Build y Build APK
 
 
 Create the Guard 
